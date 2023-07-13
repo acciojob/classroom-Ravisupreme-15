@@ -47,8 +47,6 @@ public class StudentRepository {
     public void addStudentTeacherpair(String student, String teacher) {
 
 
-
-
               List<String> list= new ArrayList<>();
 
               if(studentTeacher.containsKey(teacher)) list = studentTeacher.get(teacher);
@@ -100,24 +98,30 @@ public class StudentRepository {
 
     public void deleteTeacherByName(String teacher) {
 
+           teacherHashMap.remove(teacher);
 
           List<String> studentslist = studentTeacher.get(teacher);
+
+          studentTeacher.remove(teacher);
 
           for(String student: studentslist){
 
                studentHashMap.remove(student);
           }
+
+
     }
 
     public void deleteAllTeachers() {
 
 
-            for(String teacher: studentTeacher.keySet()){
 
+            for(String teacher: studentTeacher.keySet()){
 
                   List<String> studentList = studentTeacher.get(teacher);
 
                   studentTeacher.remove(teacher);
+                  teacherHashMap.remove(teacher);
 
                   for(String student : studentList){
 
